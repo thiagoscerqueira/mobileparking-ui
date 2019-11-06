@@ -1,0 +1,41 @@
+<div class="content">
+<p-messages [(value)]="msgs"></p-messages>
+<p-panel>
+  <p-header>
+    <div class="ui-helper-clearfix">
+      <span class="ui-panel-title" style="font-size:16px;display:inline-block;margin-top:2px">Pesquisa por Placa do Veículo</span>
+    </div>
+  </p-header>
+  <div class="ui-g ui-fluid">
+    <div class="ui-g-12 ui-md-6 ui-lg-4">
+      <span>Digite a placa do veículo</span>
+      <p-inputMask mask="aaa-9999" [(ngModel)]="placa" placeholder="XXX-9999"></p-inputMask>
+    </div>
+  </div>
+  <p-footer>
+    <button pButton type="button" icon="pi pi-search" label="Pesquisar" class="ui-button-success" (click)="pesquisar()"
+            [disabled]="placa.length < 8"></button>
+  </p-footer>
+</p-panel>
+
+<div class="resultado">
+<p-panel *ngIf="estacionamento">
+  <p-header>
+    <div class="ui-helper-clearfix">
+      <span class="ui-panel-title" style="font-size:16px;display:inline-block;margin-top:2px">Estacionamento encontrado</span>
+    </div>
+  </p-header>
+  <div class="p-grid">
+    <div class="p-col">
+      <div class="box"><b>Usuário:</b> {{estacionamento.usuarioId}}</div>
+    </div>
+    <div class="p-col">
+      <div class="box"><b>Data/hora Início:</b> {{estacionamento.inicioFormatado}}</div>
+    </div>
+    <div class="p-col">
+      <div class="box"><b>Tempo Restante:</b> {{estacionamento.tempoRestanteFormatado}} </div>
+    </div>
+  </div>
+</p-panel>
+</div>
+</div>
